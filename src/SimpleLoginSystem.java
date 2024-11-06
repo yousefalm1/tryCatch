@@ -6,13 +6,13 @@ public class SimpleLoginSystem {
 
         Scanner scanner = new Scanner(System.in);
 
-
         String validUsername = "Coded";
         String validPassword = "Coded123";
 
         boolean userIsAuthenticated = false;
 
-        while (!userIsAuthenticated) {
+
+        for (int attempts = 1; attempts <= 5; attempts++) {
             try {
                 System.out.println("Enter your username");
                 String username = scanner.nextLine();
@@ -21,9 +21,12 @@ public class SimpleLoginSystem {
                 String password = scanner.nextLine();
 
                 if (!username.equals(validUsername) || !password.equals(validPassword)) {
-                    throw new Exception("Invalid credentials please try again");
+                    if (attempts == 5) {
+                        throw new Exception("Maximum attempts exceeded");
+                    } else {
+                        throw new Exception("Invalid credentials please try again");
+                    }
                 }
-
                 userIsAuthenticated = true;
                 System.out.println("login Successful");
 
