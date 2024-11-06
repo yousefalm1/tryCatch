@@ -20,14 +20,12 @@ public class SimpleLoginSystem {
                 System.out.println("Enter your password");
                 String password = scanner.nextLine();
 
-                if (!username.equals(validUsername)) {
-                    throw new Exception("Invalid username");
-                } else if (!password.equals(validPassword)) {
-                    throw new Exception("Invalid password");
-                } else {
-                    userIsAuthenticated = true;
-                    System.out.println("login Successful");
+                if (!username.equals(validUsername) || !password.equals(validPassword)) {
+                    throw new Exception("Invalid credentials please try again");
                 }
+
+                userIsAuthenticated = true;
+                System.out.println("login Successful");
 
             } catch (Exception e) {
 //            The e.getMessage gets the desctipion of an error from an exception
